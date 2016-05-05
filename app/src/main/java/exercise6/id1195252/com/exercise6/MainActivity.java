@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()) {
             case R.id.mainactivity_add_subject_btn:
-                mDbHelper.addSubject(new Subject(mSubjectNameEditText.getText().toString(), mSubjectNumberEditText.getText().toString(), mDatePicker.getCalendarView().getDate(), mSubjectTypeRadioGroup.indexOfChild(findViewById(mSubjectTypeRadioGroup.getCheckedRadioButtonId()))));
+                mDbHelper.addSubject(new Subject(mSubjectNameEditText.getText().toString(), mSubjectNumberEditText.getText().toString(), mDatePicker.getDrawingTime(), mSubjectTypeRadioGroup.indexOfChild(findViewById(mSubjectTypeRadioGroup.getCheckedRadioButtonId()))));
                 break;
             case R.id.mainactivity_list_subject_btn:
                 break;
