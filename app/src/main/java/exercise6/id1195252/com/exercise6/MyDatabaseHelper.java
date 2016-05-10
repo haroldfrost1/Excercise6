@@ -2,8 +2,12 @@ package exercise6.id1195252.com.exercise6;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Data access layer
@@ -35,6 +39,24 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public List<Subject> getAllSubjects(){
+        List<Subject> subjectList = new ArrayList<Subject>();
 
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor subjectCursor = db.query(SubjectManager.TABLE_NAME, null, null,null,null,null,null);
+        if (subjectCursor.moveToFirst()){
+            do {
+                String subejctName = subjectCursor.getString(1);
+                String subjectNumber = subjectCursor.getString(2);
+                long subjectStartDate = subjectCursor.getLong(3);
+                int subjectIsCore = subjectCursor.getInt(4);
+
+                subjectList.add(new Subject(subejctName,subjectNumber,subjectStartDate,subjectIsCore));
+            }while(subjectCursor.moveToNext());
+        }
+
+        return subjectList;
+    }
 
 }

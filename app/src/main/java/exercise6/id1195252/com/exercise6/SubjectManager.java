@@ -5,12 +5,14 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
+import java.util.List;
+
 /**
  * SubjectManager table info
  */
 public class SubjectManager {
 
-    private static MyDatabaseHelper mMyDatabaseHelper;
+    private MyDatabaseHelper mMyDatabaseHelper;
     public static final String TABLE_NAME = "subjects_info";
 
     public SubjectManager(Context context) {
@@ -35,5 +37,9 @@ public class SubjectManager {
 
         db.insert(SubjectManager.TABLE_NAME, null,newSubject);
         db.close();
+    }
+
+    public List<Subject> getAllSubjects(){
+        return mMyDatabaseHelper.getAllSubjects();
     }
 }

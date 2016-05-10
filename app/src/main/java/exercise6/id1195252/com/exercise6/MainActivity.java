@@ -1,5 +1,6 @@
 package exercise6.id1195252.com.exercise6;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mSubjectManager.addSubject(new Subject(mSubjectNameEditText.getText().toString(), mSubjectNumberEditText.getText().toString(), mDatePicker.getDrawingTime(), mSubjectTypeRadioGroup.indexOfChild(findViewById(mSubjectTypeRadioGroup.getCheckedRadioButtonId()))));
                 break;
             case R.id.mainactivity_list_subject_btn:
+                startActivity(new Intent(this, MySubjectListActivity.class));
                 break;
         }
     }

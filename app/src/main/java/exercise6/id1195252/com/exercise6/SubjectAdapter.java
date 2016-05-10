@@ -30,7 +30,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectL
         Subject subject = mSubjectsList.get(position);
         holder.mSubjectTitle.setText(subject.getName());
         holder.mSubjectNumber.setText(subject.getNumber());
-        holder.mSubjectType.setText(subject.getIsCore() == 0 ? "Core":"Elective");
+        holder.mSubjectType.setText("Core");
         holder.mSubjectStartDate.setText("Fake Date");
     }
 

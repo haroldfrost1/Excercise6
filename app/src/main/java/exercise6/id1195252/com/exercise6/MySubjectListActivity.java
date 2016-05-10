@@ -2,6 +2,7 @@ package exercise6.id1195252.com.exercise6;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySubjectListActivity extends ListActivity {
+public class MySubjectListActivity extends AppCompatActivity{
 
     List<Subject> mSubjectList;
 
@@ -31,6 +32,7 @@ public class MySubjectListActivity extends ListActivity {
     }
 
     private void loadSubjectData() {
-
+        SubjectManager subjectManager = new SubjectManager(this);
+        mSubjectList = subjectManager.getAllSubjects();
     }
 }
