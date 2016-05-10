@@ -12,14 +12,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "Subjects.db";
     public static final int DATABASE_VERSION = 1;
-    public static final String CREATE_SUBJECTS_TABLE = "CREATE TABLE " + SubjectsTable.TABLE_NAME + "(" +
-            SubjectsTable.Columns.ID + " PRIMARY KEY AUTOINCREMENT INTEGER, " +
-            SubjectsTable.Columns.SUBJECT_NAME + " TEXT, " +
-            SubjectsTable.Columns.SUBJECT_NUMBER + " TEXT, " +
-            SubjectsTable.Columns.START_DATE + " INTEGER," +
-            SubjectsTable.Columns.ISCORE + " INTEGER" + ")";
+    public static final String CREATE_SUBJECTS_TABLE = "CREATE TABLE " + SubjectManager.TABLE_NAME + "(" +
+            SubjectManager.ColumnNames.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            SubjectManager.ColumnNames.SUBJECT_NAME + " TEXT, " +
+            SubjectManager.ColumnNames.SUBJECT_NUMBER + " TEXT, " +
+            SubjectManager.ColumnNames.START_DATE + " INTEGER," +
+            SubjectManager.ColumnNames.ISCORE + " INTEGER" + ")";
 
-    public static String DROP_SUBJECTS_TABLE = "DROP_TABLE" + SubjectsTable.TABLE_NAME;
+    public static String DROP_SUBJECTS_TABLE = "DROP_TABLE" + SubjectManager.TABLE_NAME;
 
     public MyDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,16 +35,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void addSubject(Subject subject) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues newSubject = new ContentValues();
-        newSubject.put(SubjectsTable.Columns.SUBJECT_NAME, subject.getName());
-        newSubject.put(SubjectsTable.Columns.SUBJECT_NUMBER, subject.getNumber());
-        newSubject.put(SubjectsTable.Columns.START_DATE, subject.getStartDate());
-        newSubject.put(SubjectsTable.Columns.ISCORE, subject.getIsCore());
 
-        db.insert(SubjectsTable.TABLE_NAME, null,newSubject);
-        db.close();
-    }
 
 }

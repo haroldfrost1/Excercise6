@@ -6,4 +6,8 @@
     <string name="elective">Elective</string>
     <string name="add_subject">ADD SUBJECT</string>
     <string name="list_subject">LIST SUBJECT</string>
+    <string name="subject_title">Subject Title</string>
+    <string name="subject_row_number">54120</string>
+    <string name="subject_date">04.06.2016</string>
+    <string name="subject_type">Elective</string>
 </resources>

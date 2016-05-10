@@ -11,7 +11,7 @@ import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private MyDatabaseHelper mDbHelper;
+    private SubjectManager mSubjectManager;
     private EditText mSubjectNameEditText;
     private EditText mSubjectNumberEditText;
     private DatePicker mDatePicker;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDbHelper = new MyDatabaseHelper(this);
+        mSubjectManager = new SubjectManager(this);
         mSubjectNameEditText = (EditText)findViewById(R.id.mainactivity_subject_name);
         mSubjectNumberEditText = (EditText)findViewById(R.id.mainactivity_subject_number);
         mDatePicker = (DatePicker)findViewById(R.id.mainactivity_date_picker);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()) {
             case R.id.mainactivity_add_subject_btn:
-                mDbHelper.addSubject(new Subject(mSubjectNameEditText.getText().toString(), mSubjectNumberEditText.getText().toString(), mDatePicker.getDrawingTime(), mSubjectTypeRadioGroup.indexOfChild(findViewById(mSubjectTypeRadioGroup.getCheckedRadioButtonId()))));
+                mSubjectManager.addSubject(new Subject(mSubjectNameEditText.getText().toString(), mSubjectNumberEditText.getText().toString(), mDatePicker.getDrawingTime(), mSubjectTypeRadioGroup.indexOfChild(findViewById(mSubjectTypeRadioGroup.getCheckedRadioButtonId()))));
                 break;
             case R.id.mainactivity_list_subject_btn:
                 break;
