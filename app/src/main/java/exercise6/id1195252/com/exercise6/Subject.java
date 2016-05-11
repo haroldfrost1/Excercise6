@@ -31,31 +31,31 @@ public class Subject {
         return mName;
     }
 
-    public void setName(String Name) {
-        this.mName = Name;
+    public void setName(String name) {
+        this.mName = name;
     }
 
     public String getNumber() {
         return mNumber;
     }
 
-    public void setNumber(String Number) {
-        this.mNumber = Number;
+    public void setNumber(String number) {
+        this.mNumber = number;
     }
 
     public long getStartDate() {
         return mStartDate;
     }
 
-    public void setStartDate(long StartDate) {
-        this.mStartDate = StartDate;
+    public void setStartDate(long startDate) {
+        this.mStartDate = startDate;
     }
 
     public int getIsCore() {
         return mIsCore;
     }
 
-    public void setIsCore(int Type) {
-        this.mIsCore = Type;
+    public void setIsCore(int isCore) {
+        this.mIsCore = isCore;
     }
 }
