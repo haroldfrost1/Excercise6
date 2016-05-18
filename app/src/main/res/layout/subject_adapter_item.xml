@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/activity_main_adapter_item_left"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/subject_adapter_item_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/subject_image"
+            android:gravity="center_vertical|center_horizontal"
+            android:src="@mipmap/ic_launcher" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_main_adapter_item_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/activity_main_adapter_item_left"
+        android:layout_toRightOf="@id/activity_main_adapter_item_left"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/subject_adapter_item_subject_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="14dp"
+            android:hint="@string/subject_name"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/subject_adapter_item_subject_name"
+            android:weightSum="3">
+
+
+            <TextView
+                android:id="@+id/subject_adapter_item_subject_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="@string/subject_number"
+                android:textSize="16sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/subject_adapter_item_subject_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="@string/subject_type"
+                android:textSize="16sp"
+                android:layout_weight="1"/>
+
+
+            <TextView
+                android:id="@+id/subject_adapter_item_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="@string/subject_date"
+                android:textSize="16sp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,7 +1,11 @@
 package exercise6.id1195252.com.exercise6;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
- * Created by Harold on 5/4/16.
+ * Created by harold on 16/5/16.
  */
 public class Subject {
 
@@ -11,20 +15,15 @@ public class Subject {
     private int mIsCore;
     private int mId;
 
-    public int getId() {
-        return mId;
+    public Subject(){
+
     }
 
-    public Subject(String mName, String mNumber, long mStartDate, int mIsCore) {
-        this.mId = 0;
-        this.mName = mName;
-        this.mNumber = mNumber;
-        this.mStartDate = mStartDate;
-        this.mIsCore = mIsCore;
-    }
-
-    public void setId(int id) {
-        this.mId = id;
+    public Subject(String name, String number, long startDate, int isCore){
+        this.mName = name;
+        this.mNumber = number;
+        this.mStartDate = startDate;
+        this.mIsCore = isCore;
     }
 
     public String getName() {
@@ -43,8 +42,17 @@ public class Subject {
         this.mNumber = number;
     }
 
-    public long getStartDate() {
+    public long getStartDate(){
         return mStartDate;
+    }
+
+    public String getStartDateToString() {
+        String formattedDate = "";
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-mm-yyyy", Locale.US);
+        formattedDate = simpleDateFormat.format(new Date(mStartDate));
+
+        return formattedDate;
     }
 
     public void setStartDate(long startDate) {
@@ -57,5 +65,17 @@ public class Subject {
 
     public void setIsCore(int isCore) {
         this.mIsCore = isCore;
+    }
+
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        this.mId = id;
+    }
+
+    public String getType(){
+        return mIsCore == 1?"Core":"Elective";
     }
 }

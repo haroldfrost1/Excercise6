@@ -1,38 +1,46 @@
 package exercise6.id1195252.com.exercise6;
 
-import android.app.ListActivity;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MySubjectListActivity extends AppCompatActivity{
+public class MySubjectListActivity extends AppCompatActivity {
 
-    List<Subject> mSubjectList;
-
+    private ArrayList<Subject> mSubjectsList;
+    private SubjectAdapter mSubjectAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_subject_list);
 
-         mSubjectList = new ArrayList<>();
+//        mSubjectsList = new ArrayList<>();
+        // Why?
+        loadSubjectsList();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        SubjectAdapter subjectAdapter = new SubjectAdapter(mSubjectList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(subjectAdapter);
+        RecyclerView subjectsListRecyclerView = (RecyclerView) findViewById(R.id.mysubjectlistactivity_recycler_view);
 
-        loadSubjectData();
+        mSubjectAdapter = new SubjectAdapter(this, mSubjectsList);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        if (subjectsListRecyclerView != null) {
+            subjectsListRecyclerView.setLayoutManager(layoutManager);
+            subjectsListRecyclerView.setAdapter(mSubjectAdapter);
+        }
+
+
     }
 
-    private void loadSubjectData() {
+    /**
+     * Load subject list from database
+     */
+    private void loadSubjectsList() {
         SubjectManager subjectManager = new SubjectManager(this);
-        mSubjectList = subjectManager.getAllSubjects();
+        mSubjectsList = subjectManager.getSubjectsList();
+       // mSubjectAdapter.notifyDataSetChanged();
+
     }
 }

@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mainactivity_subject_name"
                 android:layout_marginTop="10dp"
-                android:hint="@string/subject_number"
+                android:hint="@string/subject_number_hint"
                 android:inputType="number"
                 android:textSize="20sp" />
 
@@ -48,6 +48,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/mainactivity_core_radio_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/core"
@@ -66,8 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mainactivity_radio_group"
-                android:layout_marginTop="8dp"
-                >
+                android:layout_marginTop="8dp">
 
 
             </DatePicker>
@@ -83,15 +83,15 @@
                     android:id="@+id/mainactivity_add_subject_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_subject"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:text="@string/add_subject" />
 
                 <Button
                     android:id="@+id/mainactivity_list_subject_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/list_subject"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:text="@string/list_subject" />
 
             </LinearLayout>
         </RelativeLayout>

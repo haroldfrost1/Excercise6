@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">Exercise6</string>
     <string name="subject_name">Subject Name</string>
-    <string name="subject_number">Subject Number</string>
+    <string name="subject_number">33333</string>
     <string name="core">Core</string>
     <string name="elective">Elective</string>
     <string name="add_subject">ADD SUBJECT</string>
     <string name="list_subject">LIST SUBJECT</string>
     <string name="subject_title">Subject Title</string>
-    <string name="subject_row_number">54120</string>
     <string name="subject_date">04.06.2016</string>
     <string name="subject_type">Elective</string>
+    <string name="subject_image">Subject Image</string>
+    <string name="subject_number_hint">Subject Number</string>
 </resources>

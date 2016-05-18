@@ -2,44 +2,77 @@ package exercise6.id1195252.com.exercise6;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
- * SubjectManager table info
+ * Created by harold on 16/5/16.
  */
 public class SubjectManager {
 
+    public static final String TABLE_NAME = "Subjects";
     private MyDatabaseHelper mMyDatabaseHelper;
-    public static final String TABLE_NAME = "subjects_info";
+    private SQLiteDatabase mSqLiteDatabase;
 
     public SubjectManager(Context context) {
         mMyDatabaseHelper = new MyDatabaseHelper(context);
     }
 
-    public static abstract class ColumnNames implements BaseColumns{
+    /**
+     * Abstract class holds table information
+     */
+    public abstract class ColumnsNames implements BaseColumns {
+
         public static final String ID = "_id";
         public static final String SUBJECT_NAME = "subject_name";
         public static final String SUBJECT_NUMBER = "subject_number";
+        public static final String ISCORE = "iscore";
         public static final String START_DATE = "start_date";
-        public static final String ISCORE = "is_core";
     }
 
-    public void addSubject(Subject subject) {
-        SQLiteDatabase db = mMyDatabaseHelper.getWritableDatabase();
-        ContentValues newSubject = new ContentValues();
-        newSubject.put(SubjectManager.ColumnNames.SUBJECT_NAME, subject.getName());
-        newSubject.put(SubjectManager.ColumnNames.SUBJECT_NUMBER, subject.getNumber());
-        newSubject.put(SubjectManager.ColumnNames.START_DATE, subject.getStartDate());
-        newSubject.put(SubjectManager.ColumnNames.ISCORE, subject.getIsCore());
+    /**
+     * Insert a subject into the database
+     * and returns the id of the subject
+     *
+     * @param subject from Subject
+     * @return the row id of the subject
+     */
+    public long add(Subject subject) {
 
-        db.insert(SubjectManager.TABLE_NAME, null,newSubject);
-        db.close();
+        mSqLiteDatabase = mMyDatabaseHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(ColumnsNames.SUBJECT_NAME, subject.getName());
+        values.put(ColumnsNames.SUBJECT_NUMBER, subject.getNumber());
+        values.put(ColumnsNames.ISCORE, subject.getIsCore());
+        values.put(ColumnsNames.START_DATE, subject.getStartDate());
+        return mSqLiteDatabase.insert(TABLE_NAME, null, values);
     }
 
-    public List<Subject> getAllSubjects(){
-        return mMyDatabaseHelper.getAllSubjects();
+    /**
+     * List of subject from the database
+     *
+     * @return an ArrayList<Subject>
+     */
+    public ArrayList<Subject> getSubjectsList() {
+        mSqLiteDatabase = mMyDatabaseHelper.getReadableDatabase();
+        ArrayList<Subject> subjectsList = new ArrayList<>();
+
+        Cursor cursor = mMyDatabaseHelper.getSubjectsTableCursor(mSqLiteDatabase);
+        if (cursor.moveToFirst()) {
+            do {
+                String subjectName = cursor.getString(cursor.getColumnIndex(ColumnsNames.SUBJECT_NAME));
+                String subejctNumber = cursor.getString(cursor.getColumnIndex(ColumnsNames.SUBJECT_NUMBER));
+                long startDate = cursor.getLong(cursor.getColumnIndex(ColumnsNames.START_DATE));
+                int iscore = cursor.getInt(cursor.getColumnIndex(ColumnsNames.ISCORE));
+
+                subjectsList.add(new Subject(subjectName, subejctNumber, startDate, iscore));
+            } while (cursor.moveToNext());
+        }
+
+        return subjectsList;
     }
+
 }
